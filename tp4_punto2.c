@@ -60,6 +60,9 @@ void menu() {
                 printf(" Ingrese el DNI a buscar: ");
                 
                 scanf("%d", &dniBuscar);
+                
+                limpiar();
+                
                 buscarPorDNI(dniBuscar);
                 pausa();
                 break;
@@ -70,6 +73,8 @@ void menu() {
                 
                 printf(" Ingrese el apellido a buscar: ");
                 scanf("%s", apellidoBuscar);
+                
+                limpiar();
                 
                 buscarPorNombreApellido(nombreBuscar, apellidoBuscar);
                 pausa();
@@ -139,10 +144,10 @@ void buscarPorNombreApellido(char nombre[], char apellido[]) {
     struct Persona persona;
     int encontrado = 0;
     while (fscanf(archivo, "%s %s %d", persona.nombre, persona.apellido, &persona.dni) != EOF) {
-        if (strcmp(persona.nombre, nombre) == 0 || strcmp(persona.apellido, apellido) == 0) {
+        if (strcasecmp(persona.nombre, nombre) == 0 || strcasecmp(persona.apellido, apellido) == 0) {
             printf(" Nombre: %s\n Apellido: %s\n DNI: %d\n", persona.nombre, persona.apellido, persona.dni);
             encontrado = 1;
-            break;
+    		printf("\n");
         }
     }
     fclose(archivo);

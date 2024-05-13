@@ -56,6 +56,9 @@ void menu() {
                 printf(" Ingrese el DNI a buscar: ");
                 
                 scanf("%d", &dniBuscar);
+                
+                limpiar();
+                
                 buscarPorDNI(dniBuscar);
                 pausa();
                 break;
